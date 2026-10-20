@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111511">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>FitCoach — Ton entraînement</title>
+<style>
+:root{--bg:#101410;--panel:#1a201a;--panel2:#222a22;--text:#f4f6f1;--muted:#aab4a6;--lime:#c8ff45;--line:#303a30;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.app{max-width:900px;margin:auto;padding:0 16px 92px}.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0 14px}.brand{font-size:24px;font-weight:900;letter-spacing:-1px}.brand span{color:var(--lime)}.eyebrow{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 10px;color:var(--muted);font-size:12px}
+h1{font-size:clamp(28px,7vw,42px);line-height:1.05;letter-spacing:-1.5px;margin:10px 0}h2{font-size:21px;margin:0 0 12px;letter-spacing:-.5px}h3{font-size:16px;margin:0 0 6px}p{margin:6px 0;color:var(--muted)}.hero{background:linear-gradient(135deg,#283326,#171e17);border:1px solid #384638;border-radius:24px;padding:22px;margin:8px 0 24px;position:relative;overflow:hidden}.hero:after{content:"FC";position:absolute;right:-2px;bottom:-35px;font-weight:1000;font-size:130px;color:#ffffff08;pointer-events:none}.hero .tag{display:inline-block;background:var(--lime);color:#101410;padding:5px 9px;border-radius:6px;font-size:11px;font-weight:900;letter-spacing:.6px}.hero p{max-width:440px;margin:12px 0 18px;color:#d0d8cc}
+.btn{border:0;background:var(--lime);color:#101410;border-radius:12px;padding:12px 15px;font-weight:800}.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}.btn.small{padding:8px 10px;font-size:13px}.btn.danger{background:#422424;color:#ffd0d0}.section{margin:24px 0}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px;min-width:0}.sport-icon{font-size:26px;margin-bottom:10px}.muted{color:var(--muted);font-size:13px}.lime{color:var(--lime)}.big-number{font-size:28px;font-weight:900;letter-spacing:-1px}.bar{height:6px;border-radius:99px;background:#333d33;overflow:hidden;margin-top:9px}.bar span{display:block;height:100%;background:var(--lime);width:0}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#111611f2;border-top:1px solid var(--line);padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:4px;backdrop-filter:blur(14px)}.tabs button{background:transparent;color:var(--muted);border:0;border-radius:12px;padding:8px 9px;min-width:58px;flex:1;max-width:120px;font-size:11px}.tabs button b{display:block;font-size:19px;font-weight:500;margin-bottom:1px}.tabs button.active{color:var(--lime);background:#273020}
+.view{display:none}.view.active{display:block}.workout{display:flex;align-items:center;gap:12px}.workout .emoji{font-size:25px;background:var(--panel2);padding:11px;border-radius:13px}.workout .details{flex:1;min-width:0}.workout .details p{font-size:12px}.exercise{border-bottom:1px solid var(--line);padding:13px 0}.exercise:last-child{border-bottom:0}.exercise summary{cursor:pointer;font-weight:750}.exercise summary span{color:var(--muted);font-weight:400;font-size:12px;display:block}.exercise .desc{font-size:14px;margin-top:9px}.chip{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 8px;font-size:12px;color:var(--muted);margin:3px 3px 0 0}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted)}input,select{width:100%;background:#101510;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.timer{text-align:center;padding:26px 10px}.clock{font-size:clamp(54px,14vw,78px);font-weight:900;letter-spacing:-3px;font-variant-numeric:tabular-nums;margin:20px 0}.timer-modes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.timer-modes button.selected{background:var(--lime);color:#101410}.records{display:flex;flex-direction:column;gap:8px}.record{display:flex;justify-content:space-between;gap:10px;padding:12px;background:var(--panel2);border-radius:12px;font-size:13px}.empty{border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center;color:var(--muted)}.notice{font-size:12px;border-left:3px solid var(--lime);padding:10px 12px;background:#20271e;color:#c6d0c1;border-radius:0 9px 9px 0;margin:14px 0}.footer{font-size:11px;color:var(--muted);text-align:center;margin-top:30px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:30px}.app{padding-left:24px;padding-right:24px}.tabs{gap:14px}.tabs button{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div><div class="brand">FIT<span>COACH</span></div><div class="eyebrow">Train smart. Progress every day.</div></div><div class="pill">VERSION 1.0</div></header>
+
+<main>
+<section id="home" class="view active">
+  <div class="hero"><span class="tag">TON COACH PERSONNEL</span><h1>Chaque séance<br>te fait avancer.</h1><p>Musculation, CrossFit et cardio. Choisis ta séance, lance le chrono et suis tes progrès.</p><button class="btn" onclick="showView('programmes')">Voir mes programmes ↗</button></div>
+  <div class="section"><div class="row between"><h2>Ton activité</h2><span class="muted">Sur cet appareil</span></div>
+    <div class="grid">
+      <div class="card"><div class="muted">Séances terminées</div><div class="big-number" id="homeSessions">0</div><div class="muted">Depuis le début</div></div>
+      <div class="card"><div class="muted">Cette semaine</div><div class="big-number" id="homeWeek">0 <small style="font-size:14px">séance(s)</small></div><div class="bar"><span id="weekBar"></span></div></div>
+    </div>
+  </div>
+  <div class="section"><h2>À la une cette semaine</h2><div id="todayWorkout" class="card"></div></div>
+  <div class="section"><h2>Choisis ton entraînement</h2><div class="grid">
+    <button class="card" onclick="filterPrograms('Musculation')" style="text-align:left;color:inherit"><div class="sport-icon">🏋️</div><h3>Musculation</h3><p class="muted">Force & renforcement</p></button>
+    <button class="card" onclick="filterPrograms('CrossFit')" style="text-align:left;color:inherit"><div class="sport-icon">🔥</div><h3>CrossFit</h3><p class="muted">WOD & circuits</p></button>
+    <button class="card" onclick="filterPrograms('Cardio')" style="text-align:left;color:inherit"><div class="sport-icon">🏃</div><h3>Cardio</h3><p class="muted">Endurance & intervalles</p></button>
+  </div></div>
+  <div class="notice">Adapte toujours l'intensité à ta condition physique. Échauffe-toi, utilise une technique maîtrisée et arrête en cas de douleur, vertige ou malaise.</div>
+</section>
+
+<section id="programmes" class="view">
+  <div class="eyebrow">PLAN D'ENTRAÎNEMENT</div><h1>Programmes</h1><p>Une base de départ à adapter à ton niveau et à ton matériel.</p>
+  <div class="row" style="flex-wrap:wrap;margin:16px 0"><button class="btn small secondary filter selected" data-filter="Tous" onclick="filterPrograms('Tous')">Tous</button><button class="btn small secondary filter" data-filter="Musculation" onclick="filterPrograms('Musculation')">Musculation</button><button class="btn small secondary filter" data-filter="CrossFit" onclick="filterPrograms('CrossFit')">CrossFit</button><button class="btn small secondary filter" data-filter="Cardio" onclick="filterPrograms('Cardio')">Cardio</button></div>
+  <div id="programList" class="section"></div>
+  <div class="section"><h2>Exemple de semaine</h2><div id="weekPlan" class="card"></div></div>
+</section>
+
+<section id="seance" class="view">
+  <div class="eyebrow">TA SÉANCE</div><h1 id="sessionTitle">Fiche d'entraînement</h1><p id="sessionSub">Choisis un programme dans l'onglet Programmes.</p>
+  <div class="section" id="sessionContent"><div class="empty">Sélectionne un programme pour voir les exercices.</div></div>
+  <div id="completeBox" style="display:none" class="card">
+    <h2>Enregistrer ta séance</h2><p>Note tes résultats pour suivre ta progression.</p>
+    <div class="formgrid"><div class="field"><label for="duration">Durée (minutes)</label><input id="duration" type="number" min="1" max="300" value="40"></div><div class="field"><label for="effort">Effort ressenti /10</label><input id="effort" type="number" min="1" max="10" value="6"></div></div>
+    <div class="field"><label for="sessionNotes">Notes (optionnel)</label><input id="sessionNotes" maxlength="160" placeholder="Ex. : 3 séries réussies, bonne énergie"></div>
+    <button class="btn" style="width:100%" onclick="completeWorkout()">✓ Enregistrer la séance</button>
+  </div>
+</section>
+
+<section id="chrono" class="view">
+  <div class="eyebrow">OUTIL D'ENTRAÎNEMENT</div><h1>Chronomètre</h1><p>Pour tes WOD, intervalles et temps de repos.</p>
+  <div class="card timer">
+    <div class="timer-modes"><button class="btn small secondary selected" onclick="setTimerMode('stopwatch',this)">Chrono</button><button class="btn small secondary" onclick="setTimerMode('countdown',this)">Compte à rebours</button></div>
+    <div class="clock" id="clock">00:00</div>
+    <div id="timerLabel" class="muted">Prêt quand tu l'es</div>
+    <div class="row" style="justify-content:center;flex-wrap:wrap;margin:20px 0"><button class="btn" id="timerStart" onclick="toggleTimer()">▶ Démarrer</button><button class="btn secondary" onclick="resetTimer()">↺ Réinitialiser</button></div>
+    <div id="countdownControls" style="display:none;max-width:260px;margin:0 auto"><div class="field"><label for="minutes">Durée en minutes</label><input id="minutes" type="number" min="1" max="180" value="10"></div><div class="field"><label for="seconds">Secondes supplémentaires</label><input id="seconds" type="number" min="0" max="59" value="0"></div><button class="btn secondary" onclick="applyCountdown()">Appliquer la durée</button></div>
+  </div>
+  <div class="section"><h2>Temps de repos rapides</h2><div class="grid"><button class="card" onclick="quickTimer(30)" style="color:inherit;text-align:left"><h3>30 secondes</h3><p class="muted">Repos court</p></button><button class="card" onclick="quickTimer(60)" style="color:inherit;text-align:left"><h3>1 minute</h3><p class="muted">Repos classique</p></button><button class="card" onclick="quickTimer(90)" style="color:inherit;text-align:left"><h3>1 min 30</h3><p class="muted">Récupération</p></button><button class="card" onclick="quickTimer(180)" style="color:inherit;text-align:left"><h3>3 minutes</h3><p class="muted">Efforts de force</p></button></div></div>
+  <div class="notice">Le compte à rebours fonctionne tant que la page reste active. Selon les réglages de l'iPhone, le navigateur peut suspendre le minuteur en arrière-plan.</div>
+</section>
+
+<section id="progression" class="view">
+  <div class="eyebrow">TES EFFORTS COMPTENT</div><h1>Progression</h1><p>Un historique simple de tes entraînements, conservé sur cet appareil.</p>
+  <div class="grid section"><div class="card"><div class="muted">Séances</div><div class="big-number" id="totalSessions">0</div></div><div class="card"><div class="muted">Minutes d'activité</div><div class="big-number" id="totalMinutes">0</div></div></div>
+  <div class="section"><div class="row between"><h2>Historique</h2><button class="btn small ghost" onclick="exportData()">Exporter</button></div><div id="history" class="records"></div></div>
+  <div class="section"><h2>Ajouter une performance</h2><p>Enregistre un poids, des répétitions ou une distance.</p>
+    <div class="card"><div class="field"><label for="perfExercise">Exercice</label><input id="perfExercise" maxlength="80" placeholder="Ex. : Squat"></div><div class="formgrid"><div class="field"><label for="perfValue">Valeur</label><input id="perfValue" type="number" min="0" step="0.1" placeholder="Ex. : 60"></div><div class="field"><label for="perfUnit">Unité</label><select id="perfUnit"><option>kg</option><option>répétitions</option><option>km</option><option>minutes</option><option>calories</option></select></div></div><div class="field"><label for="perfNotes">Détail (optionnel)</label><input id="perfNotes" maxlength="120" placeholder="Ex. : 5 répétitions"></div><button class="btn" style="width:100%" onclick="addPerformance()">Ajouter la performance</button></div>
+  </div>
+  <div class="section"><h2>Performances enregistrées</h2><div id="performances" class="records"></div></div>
+</section>
+
+<section id="profil" class="view">
+  <div class="eyebrow">TES INFORMATIONS</div><h1>Mon profil</h1><p>Personnalise tes objectifs. Aucune création de compte nécessaire dans cette version.</p>
+  <div class="card">
+    <div class="field"><label for="userName">Prénom ou pseudo</label><input id="userName" maxlength="40" placeholder="Ex. : Alex"></div>
+    <div class="field"><label for="userLevel">Niveau sportif</label><select id="userLevel"><option>Débutant</option><option>Intermédiaire</option><option>Confirmé</option></select></div>
+    <div class="field"><label for="goal">Objectif principal</label><select id="goal"><option>Être plus en forme</option><option>Développer ma force</option><option>Développer ma masse musculaire</option><option>Améliorer mon endurance</option><option>Améliorer ma condition physique générale</option></select></div>
+    <div class="formgrid"><div class="field"><label for="goalDays">Séances par semaine</label><select id="goalDays"><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option></select></div><div class="field"><label for="equipment">Matériel disponible</label><select id="equipment"><option>Poids du corps</option><option>Haltères</option><option>Salle de sport</option><option>Matériel CrossFit</option><option>Mixte</option></select></div></div>
+    <button class="btn" style="width:100%" onclick="saveProfile()">Enregistrer mon profil</button>
+  </div>
+  <div class="notice">Tes données sont stockées dans le navigateur de cet appareil. Elles ne sont pas envoyées à un compte en ligne et ne se synchronisent pas automatiquement avec d'autres appareils. Évite d'utiliser un appareil partagé.</div>
+  <div class="section"><button class="btn danger" onclick="clearData()">Effacer toutes mes données locales</button></div>
+</section>
+</main>
+<div class="footer">FITCOACH · Bouge à ton rythme · Version de démonstration gratuite</div>
+</div>
+
+<nav class="tabs" aria-label="Navigation principale">
+<button class="active" data-view="home" onclick="showView('home',this)"><b>⌂</b>Accueil</button>
+<button data-view="programmes" onclick="showView('programmes',this)"><b>▤</b>Programmes</button>
+<button data-view="chrono" onclick="showView('chrono',this)"><b>◷</b>Chrono</button>
+<button data-view="progression" onclick="showView('progression',this)"><b>↗</b>Progrès</button>
+<button data-view="profil" onclick="showView('profil',this)"><b>◎</b>Profil</button>
+</nav>
+<script>
+const programs = [
+{id:"muscu-full",name:"Full body — débutant",sport:"Musculation",level:"Débutant",duration:40,desc:"Une séance complète pour apprendre les mouvements de base.",emoji:"🏋️",days:"Lundi",exercises:[
+["Squat au poids du corps","3 × 8–12","Jambes","Descends seulement aussi bas que tu peux en gardant le dos neutre. Garde les pieds bien ancrés."],
+["Pompes inclinées","3 × 6–10","Pectoraux","Place les mains sur un support stable. Garde le corps aligné et contrôle la descente."],
+["Rowing avec haltères ou sac léger","3 × 8–12","Dos","Penche le buste avec le dos neutre, tire les coudes vers l'arrière sans donner d'à-coups."],
+["Pont fessier","3 × 10–15","Fessiers","Pousse dans les pieds et serre les fessiers en haut sans cambrer excessivement."],
+["Planche","3 × 15–30 s","Gainage","Garde une ligne droite de la tête aux talons et respire régulièrement."]]},
+{id:"muscu-force",name:"Force — bases",sport:"Musculation",level:"Intermédiaire",duration:50,desc:"Mouvements contrôlés, priorité à la technique et à la récupération.",emoji:"💪",days:"Jeudi",exercises:[
+["Goblet squat","3 × 8","Jambes","Tiens une charge légère contre la poitrine et garde les genoux alignés avec les pieds."],
+["Développé avec haltères","3 × 8–10","Pectoraux","Choisis une charge contrôlable et ne force pas si tu ressens une douleur."],
+["Rowing haltères","3 × 10","Dos","Tire les coudes vers l'arrière en gardant les épaules basses."],
+["Soulevé de terre roumain léger","3 × 8","Chaîne postérieure","Pousse les hanches vers l'arrière, garde les charges proches des jambes et le dos neutre."],
+["Dead bug","3 × 8 par côté","Gainage","Plaque doucement le bas du dos au sol et bouge lentement."]]},
+{id:"crossfit-amrap",name:"WOD découverte — AMRAP 10",sport:"CrossFit",level:"Tous niveaux",duration:20,desc:"10 minutes : effectue des tours réguliers sans sacrifier la technique.",emoji:"🔥",days:"Mercredi",exercises:[
+["Squats au poids du corps","8 répétitions","Jambes","Garde les pieds stables et adapte l'amplitude à ta mobilité."],
+["Pompes inclinées ou classiques","6 répétitions","Haut du corps","Choisis une variante qui permet des répétitions propres."],
+["Mountain climbers lents","10 par côté","Cardio","Garde le tronc stable et ralentis si la technique se dégrade."],
+["Marche rapide sur place","30 secondes","Cardio","Accélère progressivement sans aller jusqu'à l'épuisement."]]},
+{id:"crossfit-emom",name:"WOD — EMOM 12",sport:"CrossFit",level:"Intermédiaire",duration:20,desc:"Toutes les minutes, commence le mouvement prévu puis récupère le temps restant. Réduis les répétitions si nécessaire.",emoji:"⏱️",days:"Samedi",exercises:[
+["Minute 1 : squats","8–12 répétitions","Jambes","Mouvement maîtrisé, variante au poids du corps."],
+["Minute 2 : pompes","6–10 répétitions","Haut du corps","Prends une variante adaptée à ton niveau."],
+["Minute 3 : jumping jacks ou pas latéraux","20–30 répétitions","Cardio","Choisis les pas latéraux sans saut si besoin. Répète le cycle 4 fois."]]},
+{id:"cardio-base",name:"Cardio — endurance facile",sport:"Cardio",level:"Tous niveaux",duration:30,desc:"Une séance à intensité modérée : tu dois pouvoir parler en phrases courtes.",emoji:"🏃",days:"Mardi",exercises:[
+["Échauffement progressif","5 minutes","Mise en route","Marche tranquille puis un peu plus rapide."],
+["Marche rapide, vélo ou jogging facile","20 minutes","Endurance","Choisis une allure confortable. Alterne marche et course si tu débutes."],
+["Retour au calme","5 minutes","Récupération","Ralentis progressivement et respire calmement."]]},
+{id:"cardio-interval",name:"Cardio — intervalles doux",sport:"Cardio",level:"Intermédiaire",duration:25,desc:"Des alternances d'efforts modérés et de récupération, sans sprint maximal.",emoji:"⚡",days:"Vendredi",exercises:[
+["Échauffement","5 minutes","Mise en route","Marche ou pédalage léger."],
+["Effort modéré","1 minute × 6","Intervalles","Accélère à une intensité soutenue mais contrôlée."],
+["Récupération facile","2 minutes × 5","Récupération","Ralentis entre les efforts."],
+["Retour au calme","4 minutes","Récupération","Reviens à une allure facile."]]}
+];
+const defaultWeek=[["Lundi","Musculation — Full body"],["Mardi","Cardio facile ou repos"],["Mercredi","CrossFit découverte"],["Jeudi","Mobilité ou musculation légère"],["Vendredi","Cardio selon ton énergie"],["Samedi","Marche, loisir ou repos"],["Dimanche","Repos"]];
+let store=loadStore(), currentProgram=null, currentFilter="Tous";
+function loadStore(){try{return JSON.parse(localStorage.getItem("fitcoach_v1"))||{profile:{},sessions:[],performances:[]}}catch(e){return {profile:{},sessions:[],performances:[]}}}
+function persist(){try{localStorage.setItem("fitcoach_v1",JSON.stringify(store))}catch(e){alert("Le navigateur n'a pas pu enregistrer les données. Vérifie l'espace disponible.")}}
+function showView(id,button){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));window.scrollTo({top:0,behavior:"smooth"});if(id==="progression")renderProgress();if(id==="profil")fillProfile()}
+function filterPrograms(sport){currentFilter=sport;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("selected",b.dataset.filter===sport));renderPrograms();showView("programmes")}
+function renderPrograms(){const list=document.getElementById("programList");const filtered=programs.filter(p=>currentFilter==="Tous"||p.sport===currentFilter);list.innerHTML=filtered.map(p=>`<div class="card" style="margin-bottom:10px"><div class="workout"><div class="emoji">${p.emoji}</div><div class="details"><h3>${p.name}</h3><p>${p.sport} · ${p.level} · ${p.duration} min</p><p>${p.desc}</p></div></div><div class="row between" style="margin-top:14px"><span class="chip">${p.days}</span><button class="btn small" onclick="openProgram('${p.id}')">Voir la séance →</button></div></div>`).join("");document.getElementById("weekPlan").innerHTML=defaultWeek.map(d=>`<div class="row between" style="padding:8px 0;border-bottom:1px solid var(--line)"><strong>${d[0]}</strong><span class="muted" style="text-align:right">${d[1]}</span></div>`).join("")}
+function openProgram(id){currentProgram=programs.find(p=>p.id===id);if(!currentProgram)return;document.getElementById("sessionTitle").textContent=currentProgram.name;document.getElementById("sessionSub").textContent=`${currentProgram.sport} · ${currentProgram.level} · ${currentProgram.duration} minutes`;document.getElementById("sessionContent").innerHTML=`<div class="card"><div class="row between"><span class="chip">${currentProgram.sport}</span><span class="muted">${currentProgram.exercises.length} blocs</span></div><p style="margin:12px 0">${currentProgram.desc}</p>${currentProgram.exercises.map((e,i)=>`<details class="exercise"><summary>${i+1}. ${e[0]}<span>${e[1]} · ${e[2]}</span></summary><div class="desc">${e[3]}</div></details>`).join("")}</div><div class="notice">Commence par 5 à 10 minutes d'échauffement adapté. Prends assez de repos pour conserver une bonne technique.</div>`;document.getElementById("completeBox").style.display="block";document.getElementById("duration").value=currentProgram.duration;showView("seance")}
+function completeWorkout(){if(!currentProgram)return;const duration=Math.max(1,Math.min(300,Number(document.getElementById("duration").value)||currentProgram.duration));const effort=Math.max(1,Math.min(10,Number(document.getElementById("effort").value)||6));store.sessions.unshift({id:Date.now(),program:currentProgram.name,sport:currentProgram.sport,date:new Date().toISOString(),duration,effort,notes:document.getElementById("sessionNotes").value.trim()});persist();document.getElementById("sessionNotes").value="";renderAll();showView("progression");alert("Séance enregistrée. Bravo pour ton effort !")}
+function dateLabel(d){return new Date(d).toLocaleDateString("fr-FR",{day:"2-digit",month:"short",year:"numeric"})}
+function renderProgress(){const sessions=store.sessions||[],perfs=store.performances||[];document.getElementById("totalSessions").textContent=sessions.length;document.getElementById("totalMinutes").textContent=sessions.reduce((a,s)=>a+(+s.duration||0),0);document.getElementById("history").innerHTML=sessions.length?sessions.map(s=>`<div class="record"><div><strong>${escapeHtml(s.program)}</strong><div class="muted">${dateLabel(s.date)} · ${s.duration} min · effort ${s.effort}/10${s.notes?" · "+escapeHtml(s.notes):""}</div></div><span>${sportEmoji(s.sport)}</span></div>`).join(""):'<div class="empty">Aucune séance pour le moment. Termine ton premier entraînement pour commencer ton historique.</div>';document.getElementById("performances").innerHTML=perfs.length?perfs.map(p=>`<div class="record"><div><strong>${escapeHtml(p.exercise)}</strong><div class="muted">${dateLabel(p.date)}${p.notes?" · "+escapeHtml(p.notes):""}</div></div><strong>${p.value} ${escapeHtml(p.unit)}</strong></div>`).join(""):'<div class="empty">Tes performances apparaîtront ici.</div>'}
+function addPerformance(){const exercise=document.getElementById("perfExercise").value.trim(),value=Number(document.getElementById("perfValue").value);if(!exercise||!Number.isFinite(value)||value<0){alert("Entre un exercice et une valeur valide.");return}store.performances.unshift({id:Date.now(),exercise,value,unit:document.getElementById("perfUnit").value,notes:document.getElementById("perfNotes").value.trim(),date:new Date().toISOString()});persist();document.getElementById("perfExercise").value="";document.getElementById("perfValue").value="";document.getElementById("perfNotes").value="";renderProgress()}
+function saveProfile(){store.profile={name:document.getElementById("userName").value.trim(),level:document.getElementById("userLevel").value,goal:document.getElementById("goal").value,days:document.getElementById("goalDays").value,equipment:document.getElementById("equipment").value};persist();alert("Profil enregistré sur cet appareil.");renderAll()}
+function fillProfile(){const p=store.profile||{};for(const [id,key] of [["userName","name"],["userLevel","level"],["goal","goal"],["goalDays","days"],["equipment","equipment"]]){const el=document.getElementById(id);if(p[key])el.value=p[key]}}
+function clearData(){if(confirm("Effacer le profil, les séances et les performances enregistrées sur cet appareil ? Cette action est irréversible.")){localStorage.removeItem("fitcoach_v1");store={profile:{},sessions:[],performances:[]};renderAll();fillProfile();alert("Données locales effacées.")}}
+function exportData(){const blob=new Blob([JSON.stringify(store,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="fitcoach-donnees.json";a.click();URL.revokeObjectURL(url)}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function sportEmoji(s){return s==="Musculation"?"🏋️":s==="CrossFit"?"🔥":"🏃"}
+function renderHome(){const sessions=store.sessions||[];document.getElementById("homeSessions").textContent=sessions.length;const now=new Date(),start=new Date(now);start.setDate(now.getDate()-((now.getDay()+6)%7));start.setHours(0,0,0,0);const count=sessions.filter(s=>new Date(s.date)>=start).length;document.getElementById("homeWeek").innerHTML=`${count} <small style="font-size:14px">séance(s)</small>`;document.getElementById("weekBar").style.width=Math.min(100,count/Math.max(1,Number(store.profile.days||3))*100)+"%";const p=programs[(now.getDay()+programs.length-1)%programs.length];document.getElementById("todayWorkout").innerHTML=`<div class="workout"><div class="emoji">${p.emoji}</div><div class="details"><h3>${p.name}</h3><p>${p.sport} · ${p.duration} min</p></div></div><button class="btn small" style="margin-top:14px" onclick="openProgram('${p.id}')">Voir la séance</button>`}
+function renderAll(){renderHome();renderPrograms();renderProgress()}
+let timerMode="stopwatch",timerRunning=false,timerStartedAt=0,elapsed=0,countdownTotal=600,remaining=600,interval=null;
+function formatTime(s){s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function drawTimer(){let secs=timerMode==="stopwatch"?elapsed+(timerRunning?(Date.now()-timerStartedAt)/1000:0):remaining;document.getElementById("clock").textContent=formatTime(secs);document.getElementById("timerStart").textContent=timerRunning?"Ⅱ Pause":"▶ Démarrer"}
+function tick(){if(timerMode==="stopwatch"){drawTimer()}else{remaining=Math.max(0,countdownTotal-(timerRunning?(Date.now()-timerStartedAt)/1000:0));drawTimer();if(remaining<=0){timerRunning=false;clearInterval(interval);interval=null;document.getElementById("timerLabel").textContent="Temps écoulé !";document.getElementById("timerStart").textContent="▶ Recommencer";try{if(navigator.vibrate)navigator.vibrate([200,100,200])}catch(e){}}}}
+function setTimerMode(mode,button){pauseTimer();timerMode=mode;document.querySelectorAll(".timer-modes button").forEach(b=>b.classList.remove("selected"));button.classList.add("selected");document.getElementById("countdownControls").style.display=mode==="countdown"?"block":"none";resetTimer()}
+function toggleTimer(){if(timerRunning){if(timerMode==="stopwatch")elapsed+=(Date.now()-timerStartedAt)/1000;else remaining=Math.max(0,countdownTotal-(Date.now()-timerStartedAt)/1000);timerRunning=false;clearInterval(interval);interval=null;document.getElementById("timerLabel").textContent="En pause";drawTimer();return}if(timerMode==="countdown"&&remaining<=0){remaining=countdownTotal}timerRunning=true;timerStartedAt=Date.now();document.getElementById("timerLabel").textContent="En cours";clearInterval(interval);interval=setInterval(tick,200);drawTimer()}
+function pauseTimer(){if(timerRunning){if(timerMode==="stopwatch")elapsed+=(Date.now()-timerStartedAt)/1000;else remaining=Math.max(0,countdownTotal-(Date.now()-timerStartedAt)/1000)}timerRunning=false;clearInterval(interval);interval=null}
+function resetTimer(){pauseTimer();elapsed=0;remaining=countdownTotal;document.getElementById("timerLabel").textContent="Prêt quand tu l'es";drawTimer()}
+function applyCountdown(){const m=Math.max(0,Math.min(180,Number(document.getElementById("minutes").value)||0)),s=Math.max(0,Math.min(59,Number(document.getElementById("seconds").value)||0));countdownTotal=Math.max(1,m*60+s);resetTimer()}
+function quickTimer(s){timerMode="countdown";countdownTotal=s;remaining=s;pauseTimer();document.querySelectorAll(".timer-modes button").forEach((b,i)=>b.classList.toggle("selected",i===1));document.getElementById("countdownControls").style.display="block";document.getElementById("minutes").value=Math.floor(s/60);document.getElementById("seconds").value=s%60;resetTimer();toggleTimer()}
+renderAll();fillProfile();drawTimer();
+</script>
+</body>
+</html>
