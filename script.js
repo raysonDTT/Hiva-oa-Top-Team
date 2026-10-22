@@ -37,7 +37,34 @@ function renderMuscles(){document.getElementById('muscleGrid').innerHTML=muscles
 function renderExercises(){const q=(document.getElementById('exerciseSearch')?.value||'').toLowerCase(),f=(document.getElementById('exerciseFilter')?.value||'');const list=initialExercises.filter(e=>(e.name+' '+e.desc+' '+e.equipment).toLowerCase().includes(q)&&(!f||e.muscle===f));document.getElementById('exerciseGrid').innerHTML=list.length?list.map(e=>`<article class="card"><div class="exercise-icon">${e.icon}</div><span class="tag">${e.muscle}</span><div><h3>${esc(e.name)}</h3><p>${esc(e.desc)}</p></div><div class="card-footer"><span class="muted" style="font-size:12px">${esc(e.equipment)} · ${e.level}</span><button class="btn secondary small" onclick="addFromExercise(${e.id})">Ajouter</button></div></article>`).join(''):'<div class="empty">Aucun exercice trouvé.</div>'}
 function filterMuscle(m){document.getElementById('exerciseFilter').value=m;go('exercises');renderExercises()}
 function addFromExercise(id){builderItems.push({exerciseId:id,sets:3,reps:'10',weight:'',rest:60});renderBuilder();go('builder');notify('Exercice ajouté au programme')}
-function startProgram(id){const p=programs.find(x=>x.id===id);if(!p)return;document.getElementById('sessionProgram').value=id;document.getElementById('sessionNotes').value='';go('performance')}
+
+// === C'EST ICI QUE LA CORRECTION A LIEU ===
+function startProgram(id){
+    const p = programs.find(x => x.id === id);
+    if(!p) return;
+    
+    document.getElementById('modalTitle').textContent = p.name;
+    let html = `<p style="color:var(--muted); margin-bottom:15px;">${p.desc}</p>`;
+    
+    p.items.forEach((item, index) => {
+        const exo = exerciseById(item.exerciseId);
+        html += `
+        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line);">
+            <div>
+                <strong style="color:#fff;">${index + 1}. ${exo.name}</strong><br>
+                <small style="color:var(--muted);">${exo.muscle}</small>
+            </div>
+            <div style="text-align:right; font-weight:800; color:var(--red);">
+                ${item.sets} séries<br>${item.reps} reps
+            </div>
+        </div>`;
+    });
+    
+    document.getElementById('modalContent').innerHTML = html;
+    document.getElementById('modalProgram').style.display = 'flex';
+}
+// ==========================================
+
 function refreshSelects(){document.getElementById('sessionProgram').innerHTML=programs.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');document.getElementById('addExerciseSelect').innerHTML=initialExercises.map(e=>`<option value="${e.id}">${esc(e.name)} — ${e.muscle}</option>`).join('');document.getElementById('exerciseFilter').innerHTML='<option value="">Tous les muscles</option>'+muscles.map(m=>`<option>${m}</option>`).join('')}
 function addExerciseToBuilder(){const id=Number(document.getElementById('addExerciseSelect').value);builderItems.push({exerciseId:id,sets:3,reps:'10',weight:'',rest:60});renderBuilder()}
 function renderBuilder(){const root=document.getElementById('builderRows');if(!builderItems.length){root.innerHTML='<div class="empty">Aucun exercice pour le moment. Choisis un exercice ci-dessus pour commencer.</div>';return}root.innerHTML=builderItems.map((it,i)=>{const e=exerciseById(it.exerciseId);return `<div class="exercise-row"><div class="field"><label>Exercice ${i+1}</label><select onchange="changeBuilderExercise(${i},this.value)">${initialExercises.map(x=>`<option value="${x.id}" ${x.id===it.exerciseId?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div class="field"><label>Séries</label><input type="number" min="1" max="20" value="${it.sets}" onchange="updateBuilder(${i},'sets',this.value)"></div><div class="field"><label>Répétitions</label><input value="${esc(String(it.reps))}" onchange="updateBuilder(${i},'reps',this.value)"></div><div class="field"><label>Charge (kg)</label><input type="number" min="0" step="0.5" placeholder="—" value="${esc(String(it.weight))}" onchange="updateBuilder(${i},'weight',this.value)"></div><div class="field"><label>Repos (s)</label><input type="number" min="0" step="15" value="${it.rest}" onchange="updateBuilder(${i},'rest',this.value)"></div><button class="btn ghost small remove-ex" onclick="removeBuilder(${i})">Retirer</button></div>`}).join('')}
@@ -68,7 +95,7 @@ let tabataRound = 1;
 let tabataPhase = 'work';
 let tabataWorkTime = 60; 
 let tabataRestTime = 30;
-let amrapRounds = 0; // Variable pour le compteur AMRAP
+let amrapRounds = 0; 
 
 function playBeep() {
     try {
@@ -91,7 +118,6 @@ function formatMegaTime(seconds) {
     const s = (Math.abs(seconds) % 60).toString().padStart(2, '0');
     return `${m}:${s}`;
 }
-
 function updateMegaDisplay() {
     const display = document.getElementById('chronoDisplay');
     if(!display) return;
@@ -126,11 +152,10 @@ function setChronoMode(mode) {
     const settings = document.getElementById('chronoSettings');
     const round = document.getElementById('chronoRound');
     
-    // On cache tous les champs et le bouton AMRAP
     const allFields = ['field-chronoMin', 'field-chronoSec', 'field-tabataWork', 'field-tabataWorkSec', 'field-tabataRest', 'field-tabataRestSec', 'field-tabataSets'];
     allFields.forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
     settings.classList.remove('tabata-active');
-    document.getElementById('amrapCounterBox').style.display = 'none'; // Cache le compteur
+    document.getElementById('amrapCounterBox').style.display = 'none';
 
     if (mode === 'minuteur') {
         message.textContent = 'TU AS';
@@ -183,7 +208,6 @@ function setChronoMode(mode) {
         document.getElementById('chronoMin').value = 10;
         document.getElementById('chronoSec').value = 0;
         
-        // On affiche le compteur de tours
         document.getElementById('amrapCounterBox').style.display = 'block';
         amrapRounds = 0;
         document.getElementById('amrapCountDisplay').textContent = amrapRounds;
@@ -316,11 +340,10 @@ function addAmrapRound() {
     if (megaChronoMode === 'amrap') {
         amrapRounds++;
         document.getElementById('amrapCountDisplay').textContent = amrapRounds;
-        playBeep(); // Petit son de validation
+        playBeep();
     }
 }
 
-// INITIALISATION DU CHRONO AU CHARGEMENT
 window.addEventListener('load', () => {
     setChronoMode('minuteur');
 });
