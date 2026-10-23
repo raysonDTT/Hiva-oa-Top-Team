@@ -123,3 +123,12 @@ body.light-mode .mobile-nav button.active { background: var(--red); color: #fff;
   #chronoSettings.tabata-active .form-grid { grid-template-columns: 1fr !important; }
   #chronoSettings.tabata-active .tabata-fields#field-tabataSets { grid-column: span 1 !important; }
 }
+/* Animation pour le chrono quand ça sonne */
+@keyframes pulse-red {
+    0% { color: #fff; text-shadow: none; transform: scale(1); }
+    50% { color: var(--red); text-shadow: 0 0 20px var(--red); transform: scale(1.05); }
+    100% { color: #fff; text-shadow: none; transform: scale(1); }
+}
+.chrono-alert {
+    animation: pulse-red 1s infinite;
+}
