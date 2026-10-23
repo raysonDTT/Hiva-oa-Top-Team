@@ -25,7 +25,6 @@
 <main>
 <section class="page active" id="page-home">
  
- <!-- BANDEAU AVEC LA VIDÉO -->
  <div class="hero">
   <video class="hero-video" autoplay loop muted playsinline>
     <source src="video-hero.mp4" type="video/mp4">
@@ -41,7 +40,6 @@
   </div>
  </div>
 
- <!-- LES 4 DISCIPLINES -->
  <div class="section-row"><h2>Choisis ton style de combat</h2></div>
  <div class="discipline-grid">
   <div class="discipline-card" onclick="go('crossfit')">
@@ -54,7 +52,7 @@
   </div>
   <div class="discipline-card" onclick="go('muscu')">
     <video class="card-video" autoplay loop muted playsinline>
-        <source src="video-muscu-compressed.mp4" type="video/mp4">
+        <source src="video-muscu.mp4" type="video/mp4">
     </video>
     <div class="card-overlay"></div>
     <h3>Musculation</h3>
@@ -70,7 +68,7 @@
   </div>
   <div class="discipline-card" onclick="go('powerlifting')">
     <video class="card-video" autoplay loop muted playsinline>
-        <source src="video-powerlifting-compressed.mp4" type="video/mp4">
+        <source src="video-powerlifting.mp4" type="video/mp4">
     </video>
     <div class="card-overlay"></div>
     <h3>Powerlifting</h3>
@@ -84,115 +82,49 @@
  <div class="notice">Cette version de démonstration enregistre les données dans ce navigateur uniquement. Les comptes, les données partagées et la synchronisation seront ajoutés dans une prochaine étape.</div>
 </section>
 
-<!-- PAGE BOXE -->
+<!-- PAGES DISCIPLINES -->
 <section class="page" id="page-boxe">
-  <div class="heading" style="margin-bottom:20px">
-    <div>
-      <div class="eyebrow">Discipline</div>
-      <h1>Boxe</h1>
-      <p>Choisis ton niveau pour commencer.</p>
-    </div>
-    <button class="btn ghost small" onclick="go('home')">← Retour</button>
-  </div>
+  <div class="heading" style="margin-bottom:20px"><div><div class="eyebrow">Discipline</div><h1>Boxe</h1><p>Choisis ton niveau pour commencer.</p></div><button class="btn ghost small" onclick="go('home')">← Retour</button></div>
   <div class="niveau-grid">
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-debutant.jpg');" onclick="go('programs')">
-      <h2>Débutant</h2><p>Apprendre les bases</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-intermediaire.jpg');" onclick="go('programs')">
-      <h2>Intermédiaire</h2><p>Développer sa puissance</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-avance.jpg');" onclick="go('programs')">
-      <h2>Avancé</h2><p>Intensité maximale</p>
-    </div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-debutant.jpg');" onclick="go('programs')"><h2>Débutant</h2><p>Apprendre les bases</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-intermediaire.jpg');" onclick="go('programs')"><h2>Intermédiaire</h2><p>Développer sa puissance</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('boxe-avance.jpg');" onclick="go('programs')"><h2>Avancé</h2><p>Intensité maximale</p></div>
   </div>
 </section>
-
-<!-- PAGE MUSCULATION -->
 <section class="page" id="page-muscu">
-  <div class="heading" style="margin-bottom:20px">
-    <div>
-      <div class="eyebrow">Discipline</div>
-      <h1>Musculation</h1>
-      <p>Choisis ton niveau pour commencer.</p>
-    </div>
-    <button class="btn ghost small" onclick="go('home')">← Retour</button>
-  </div>
+  <div class="heading" style="margin-bottom:20px"><div><div class="eyebrow">Discipline</div><h1>Musculation</h1><p>Choisis ton niveau pour commencer.</p></div><button class="btn ghost small" onclick="go('home')">← Retour</button></div>
   <div class="niveau-grid">
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-debutant.jpg');" onclick="go('programs')">
-      <h2>Débutant</h2><p>Apprendre les mouvements</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-intermediaire.jpg');" onclick="go('programs')">
-      <h2>Intermédiaire</h2><p>Prendre du volume</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-avance.jpg');" onclick="go('programs')">
-      <h2>Avancé</h2><p>Force pure</p>
-    </div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-debutant.jpg');" onclick="go('programs')"><h2>Débutant</h2><p>Apprendre les mouvements</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-intermediaire.jpg');" onclick="go('programs')"><h2>Intermédiaire</h2><p>Prendre du volume</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('muscu-avance.jpg');" onclick="go('programs')"><h2>Avancé</h2><p>Force pure</p></div>
   </div>
 </section>
-
-<!-- PAGE CROSSFIT -->
 <section class="page" id="page-crossfit">
-  <div class="heading" style="margin-bottom:20px">
-    <div>
-      <div class="eyebrow">Discipline</div>
-      <h1>CrossFit / Hyrox</h1>
-      <p>Choisis ton niveau pour commencer.</p>
-    </div>
-    <button class="btn ghost small" onclick="go('home')">← Retour</button>
-  </div>
+  <div class="heading" style="margin-bottom:20px"><div><div class="eyebrow">Discipline</div><h1>CrossFit / Hyrox</h1><p>Choisis ton niveau pour commencer.</p></div><button class="btn ghost small" onclick="go('home')">← Retour</button></div>
   <div class="niveau-grid">
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-debutant.jpg');" onclick="go('programs')">
-      <h2>Débutant</h2><p>Découvrir le CrossFit</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-intermediaire.jpg');" onclick="go('programs')">
-      <h2>Intermédiaire</h2><p>Augmenter l'intensité</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-avance.jpg');" onclick="go('programs')">
-      <h2>Avancé</h2><p>Compétition Hyrox</p>
-    </div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-debutant.jpg');" onclick="go('programs')"><h2>Débutant</h2><p>Découvrir le CrossFit</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-intermediaire.jpg');" onclick="go('programs')"><h2>Intermédiaire</h2><p>Augmenter l'intensité</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('crossfit-avance.jpg');" onclick="go('programs')"><h2>Avancé</h2><p>Compétition Hyrox</p></div>
   </div>
 </section>
-
-<!-- PAGE POWERLIFTING -->
 <section class="page" id="page-powerlifting">
-  <div class="heading" style="margin-bottom:20px">
-    <div>
-      <div class="eyebrow">Discipline</div>
-      <h1>Powerlifting</h1>
-      <p>Choisis ton niveau pour commencer.</p>
-    </div>
-    <button class="btn ghost small" onclick="go('home')">← Retour</button>
-  </div>
+  <div class="heading" style="margin-bottom:20px"><div><div class="eyebrow">Discipline</div><h1>Powerlifting</h1><p>Choisis ton niveau pour commencer.</p></div><button class="btn ghost small" onclick="go('home')">← Retour</button></div>
   <div class="niveau-grid">
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-debutant.jpg');" onclick="go('programs')">
-      <h2>Débutant</h2><p>Apprendre la technique</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-intermediaire.jpg');" onclick="go('programs')">
-      <h2>Intermédiaire</h2><p>Augmenter les charges</p>
-    </div>
-    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-avance.jpg');" onclick="go('programs')">
-      <h2>Avancé</h2><p>Force maximale</p>
-    </div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-debutant.jpg');" onclick="go('programs')"><h2>Débutant</h2><p>Apprendre la technique</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-intermediaire.jpg');" onclick="go('programs')"><h2>Intermédiaire</h2><p>Augmenter les charges</p></div>
+    <div class="niveau-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('powerlifting-avance.jpg');" onclick="go('programs')"><h2>Avancé</h2><p>Force maximale</p></div>
   </div>
 </section>
 
 <!-- PAGE MÉGA CHRONOMÈTRE -->
 <section class="page" id="page-chrono">
-  <div class="heading">
-    <div>
-      <div class="eyebrow">Outil d'entraînement</div>
-      <h1>Méga Chrono</h1>
-      <p>Gère tes repos, tes AMRAP et tes Tabata.</p>
-    </div>
-  </div>
-
+  <div class="heading"><div><div class="eyebrow">Outil d'entraînement</div><h1>Méga Chrono</h1><p>Gère tes repos, tes AMRAP et tes Tabata.</p></div></div>
   <div class="chrono-tabs">
     <button class="chrono-tab active" onclick="setChronoMode('minuteur')" id="tab-minuteur">Minuteur</button>
     <button class="chrono-tab" onclick="setChronoMode('chronometre')" id="tab-chronometre">Chronomètre</button>
     <button class="chrono-tab" onclick="setChronoMode('tabata')" id="tab-tabata">Tabata</button>
     <button class="chrono-tab" onclick="setChronoMode('amrap')" id="tab-amrap">AMRAP</button>
   </div>
-
   <div class="chrono-container">
     <div class="chrono-main">
       <div class="chrono-message" id="chronoMessage">TU AS</div>
@@ -200,57 +132,21 @@
       <div class="chrono-label" id="chronoLabel">POUR CHALALA</div>
       <div class="chrono-round" id="chronoRound"></div>
     </div>
-    
-    <!-- CHAMPS DE RÉGLAGE -->
     <div id="chronoSettings" class="chrono-settings">
       <div class="form-grid" style="max-width:500px; margin: 0 auto; width: 100%;">
-        
-        <!-- Minuteur / AMRAP -->
-        <div class="field" id="field-chronoMin">
-          <label>Minutes</label>
-          <input type="number" id="chronoMin" value="1" min="0" max="99" onchange="updateChronoFromInputs()">
-        </div>
-        <div class="field" id="field-chronoSec">
-          <label>Secondes</label>
-          <input type="number" id="chronoSec" value="30" min="0" max="59" onchange="updateChronoFromInputs()">
-        </div>
-        
-        <!-- TABATA : Travail -->
-        <div class="field tabata-fields" id="field-tabataWork" style="display:none;">
-          <label>Travail (min)</label>
-          <input type="number" id="tabataWorkMin" value="1" min="0" max="10" onchange="updateChronoFromInputs()">
-        </div>
-        <div class="field tabata-fields" id="field-tabataWorkSec" style="display:none;">
-          <label>Travail (sec)</label>
-          <input type="number" id="tabataWorkSec" value="0" min="0" max="59" onchange="updateChronoFromInputs()">
-        </div>
-
-        <!-- TABATA : Repos -->
-        <div class="field tabata-fields" id="field-tabataRest" style="display:none;">
-          <label>Repos (min)</label>
-          <input type="number" id="tabataRestMin" value="0" min="0" max="10" onchange="updateChronoFromInputs()">
-        </div>
-        <div class="field tabata-fields" id="field-tabataRestSec" style="display:none;">
-          <label>Repos (sec)</label>
-          <input type="number" id="tabataRestSec" value="30" min="0" max="59" onchange="updateChronoFromInputs()">
-        </div>
-
-        <!-- TABATA : Séries -->
-        <div class="field tabata-fields" id="field-tabataSets" style="display:none; grid-column: span 2;">
-          <label>Nombre de séries</label>
-          <input type="number" id="tabataSetsInput" value="8" min="1" max="50" onchange="updateChronoFromInputs()">
-        </div>
+        <div class="field" id="field-chronoMin"><label>Minutes</label><input type="number" id="chronoMin" value="1" min="0" max="99" onchange="updateChronoFromInputs()"></div>
+        <div class="field" id="field-chronoSec"><label>Secondes</label><input type="number" id="chronoSec" value="30" min="0" max="59" onchange="updateChronoFromInputs()"></div>
+        <div class="field tabata-fields" id="field-tabataWork" style="display:none;"><label>Travail (min)</label><input type="number" id="tabataWorkMin" value="1" min="0" max="10" onchange="updateChronoFromInputs()"></div>
+        <div class="field tabata-fields" id="field-tabataWorkSec" style="display:none;"><label>Travail (sec)</label><input type="number" id="tabataWorkSec" value="0" min="0" max="59" onchange="updateChronoFromInputs()"></div>
+        <div class="field tabata-fields" id="field-tabataRest" style="display:none;"><label>Repos (min)</label><input type="number" id="tabataRestMin" value="0" min="0" max="10" onchange="updateChronoFromInputs()"></div>
+        <div class="field tabata-fields" id="field-tabataRestSec" style="display:none;"><label>Repos (sec)</label><input type="number" id="tabataRestSec" value="30" min="0" max="59" onchange="updateChronoFromInputs()"></div>
+        <div class="field tabata-fields" id="field-tabataSets" style="display:none; grid-column: span 2;"><label>Nombre de séries</label><input type="number" id="tabataSetsInput" value="8" min="1" max="50" onchange="updateChronoFromInputs()"></div>
       </div>
     </div>
-
-    <!-- Bouton +1 Tour pour l'AMRAP -->
     <div id="amrapCounterBox" style="display:none; text-align:center; margin-bottom: 15px; width:100%;">
       <button class="btn" onclick="addAmrapRound()" style="font-size: 24px; padding: 20px; width: 100%; border-radius: 15px;">+ 1 TOUR</button>
-      <div style="font-size: 20px; font-weight: 900; margin-top: 15px; color: #fff;">
-        Tours terminés : <span id="amrapCountDisplay" style="color: var(--red);">0</span>
-      </div>
+      <div style="font-size: 20px; font-weight: 900; margin-top: 15px; color: #fff;">Tours terminés : <span id="amrapCountDisplay" style="color: var(--red);">0</span></div>
     </div>
-
     <div class="chrono-controls">
       <button class="btn" id="btnStart" onclick="toggleMegaChrono()">▶ Démarrer</button>
       <button class="btn ghost" onclick="resetMegaChrono()">↺ Reset</button>
@@ -272,30 +168,59 @@
  <div class="filters"><input id="exerciseSearch" placeholder="Nom d'un exercice…" oninput="renderExercises()" style="flex:1;min-width:170px"><select id="exerciseFilter" onchange="renderExercises()" style="width:auto;min-width:150px"><option value="">Tous les muscles</option></select></div>
  <div class="grid" id="exerciseGrid"></div>
 </section>
+
+<!-- PAGE MON PROGRAMME (CRÉATEUR) -->
 <section class="page" id="page-builder">
  <div class="heading"><div><div class="eyebrow">Personnalisation</div><h1>Mon programme</h1><p>Compose ta séance et règle tes séries, répétitions, charge et repos.</p></div></div>
  <div class="panel">
-  <div class="form-grid"><div class="field"><label for="newProgramName">Nom du programme</label><input id="newProgramName" placeholder="Ex. : Haut du corps A"></div><div class="field"><label for="newProgramGoal">Objectif</label><select id="newProgramGoal"><option>Hypertrophie</option><option>Force</option><option>Endurance</option><option>Conditionnement</option></select></div></div>
+  <div class="form-grid">
+    <div class="field"><label for="newProgramName">Nom du programme</label><input id="newProgramName" placeholder="Ex. : Haut du corps A"></div>
+    <div class="field"><label for="newProgramGoal">Objectif</label><select id="newProgramGoal"><option>Hypertrophie</option><option>Force</option><option>Endurance</option><option>Conditionnement</option></select></div>
+  </div>
+
+  <!-- CHOIX DU MODE D'ENTRAÎNEMENT -->
+  <div class="form-grid" style="margin-bottom: 15px; background: #101012; padding: 15px; border-radius: 10px; border: 1px solid var(--line);">
+    <div class="field">
+      <label>Type de séance</label>
+      <select id="newProgramMode" onchange="toggleProgramModeSettings()">
+        <option value="classique">Classique (Repos manuel)</option>
+        <option value="tabata">Tabata (Effort / Repos)</option>
+        <option value="amrap">AMRAP (Chrono par exo)</option>
+      </select>
+    </div>
+    
+    <div class="field" id="fieldProgramTabata" style="display:none;">
+      <label>Temps d'effort (sec)</label>
+      <input type="number" id="newProgramTabataWork" value="20" min="5" step="5">
+    </div>
+    <div class="field" id="fieldProgramRest" style="display:none;">
+      <label>Temps de repos (sec)</label>
+      <input type="number" id="newProgramRest" value="10" min="0" step="5">
+    </div>
+    <div class="field" id="fieldProgramAmrapTime" style="display:none;">
+      <label>Temps par exercice (sec)</label>
+      <input type="number" id="newProgramAmrapTime" value="60" min="10" step="10">
+    </div>
+  </div>
+
   <div class="form-grid"><div class="field"><label for="addExerciseSelect">Ajouter un exercice</label><select id="addExerciseSelect"></select></div><div class="field" style="display:flex;align-items:end"><button class="btn secondary" style="width:100%" onclick="addExerciseToBuilder()">+ Ajouter l'exercice</button></div></div>
   <h2 style="margin-top:15px">Contenu de la séance</h2><div id="builderRows"></div>
   <div class="form-actions"><button class="btn" onclick="saveProgram()">Enregistrer le programme</button><button class="btn ghost" onclick="clearBuilder()">Vider la séance</button></div>
  </div>
 </section>
+
 <section class="page" id="page-performance">
  <div class="heading"><div><div class="eyebrow">Régularité & progression</div><h1>Performances</h1><p>Enregistre une séance et garde une trace de ton travail.</p></div></div>
  <div class="panel" style="margin-bottom:18px"><h2>Enregistrer une séance</h2><div class="form-grid"><div class="field"><label for="sessionProgram">Programme réalisé</label><select id="sessionProgram"></select></div><div class="field"><label for="sessionDate">Date</label><input id="sessionDate" type="date"></div></div><div class="field"><label for="sessionNotes">Notes (facultatif)</label><textarea id="sessionNotes" rows="3" placeholder="Énergie, ressenti, progression…"></textarea></div><button class="btn" onclick="saveSession()">Enregistrer ma séance</button></div>
  <div class="section-row"><h2>Historique</h2><span class="muted" id="sessionCount"></span></div><div class="list" id="sessionList"></div>
 </section>
 
-<!-- PAGE MON ESPACE -->
 <section class="page" id="page-settings">
  <div class="heading"><div><div class="eyebrow">Configuration</div><h1>Mon espace</h1><p>Quelques informations sur cette version de démonstration.</p></div></div>
  <div class="panel" style="margin-bottom: 18px;">
    <h2>Apparence</h2>
    <p style="margin-bottom: 15px;">Choisis le thème de ton application.</p>
-   <div style="display: flex; gap: 10px;">
-     <button class="btn" id="themeBtn" onclick="toggleTheme()">🌙 Mode Sombre</button>
-   </div>
+   <div style="display: flex; gap: 10px;"><button class="btn" id="themeBtn" onclick="toggleTheme()">🌙 Mode Sombre</button></div>
  </div>
  <div class="grid two">
   <div class="card"><h3>Profil & équipe</h3><p>La connexion des membres et le rôle administrateur seront configurés avec une authentification sécurisée.</p><span class="tag">À connecter</span></div>
@@ -316,7 +241,32 @@
   <div style="background:var(--panel); border:1px solid var(--red); border-radius:15px; padding:20px; max-width:500px; width:100%; max-height:80vh; overflow-y:auto;">
     <h2 id="modalTitle" style="margin-top:0; color:var(--red);">Nom du programme</h2>
     <div id="modalContent" style="margin-bottom:20px;"></div>
+    <button class="btn" onclick="lancerSeance()" style="width:100%; font-size:18px; padding:15px; margin-bottom:10px;">🔥 Lancer la séance</button>
     <button class="btn ghost" onclick="document.getElementById('modalProgram').style.display='none'" style="width:100%;">Fermer</button>
+  </div>
+</div>
+
+<!-- ÉCRAN DE SÉANCE PLEIN ÉCRAN -->
+<div id="page-seance" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:10000; flex-direction:column;">
+  
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:15px; background:#101012; border-bottom:1px solid var(--line);">
+    <button class="btn ghost small" onclick="quitterSeance()" style="color:var(--red); border-color:var(--red);">✕ Quitter</button>
+    <div id="seanceProgress" style="font-weight:900; color:#fff;">Exercice 1 / 5</div>
+  </div>
+
+  <div style="flex:1; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#000;">
+    <video id="seanceVideo" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0.6; display:none;" autoplay loop muted playsinline></video>
+    <div style="position:relative; z-index:2; text-align:center; padding:20px;">
+      <h1 id="seanceExerciseName" style="font-size:clamp(30px, 5vw, 50px); margin:0 0 10px 0; text-shadow:0 2px 10px #000;">Nom de l'exercice</h1>
+      <p id="seanceExerciseInfo" style="font-size:20px; color:var(--red); font-weight:900; text-shadow:0 2px 5px #000;">4 séries × 10 reps</p>
+    </div>
+  </div>
+
+  <div style="padding:30px 20px; background:var(--panel); border-top:2px solid var(--red); text-align:center;">
+    <div id="seanceCoachMessage" style="font-size:20px; font-weight:900; color:var(--muted); margin-bottom:10px; text-transform:uppercase;">Prêt ?</div>
+    <div id="seanceChronoDisplay" style="font-size:80px; font-weight:1000; color:#fff; line-height:1; letter-spacing:-3px;">00:00</div>
+    <button id="seanceMainBtn" class="btn" onclick="actionSeance()" style="width:100%; font-size:24px; padding:20px; margin-top:20px; border-radius:15px;">▶ Démarrer l'exercice</button>
+    <button id="seanceNextBtn" class="btn secondary" onclick="suivantSeance()" style="width:100%; font-size:18px; padding:15px; margin-top:10px; border-radius:15px; display:none;">Exercice suivant ➔</button>
   </div>
 </div>
 
